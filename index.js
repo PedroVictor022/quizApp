@@ -30,7 +30,7 @@ let questionsData = [
       c: 'Python < Javascript',
       d: 'Python != java',
       correct: b
-   }
+   }, 
 ];
 
 const $select = document.querySelector.bind(document);
