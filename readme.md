@@ -9,3 +9,8 @@
 - Ao clicar para a proxima pergunta
  + pular para a proxima pergunta
  - Logica para finalizar o quiz
+
+
+ se o currentQuiz for >= 4 {
+   parar contador
+ }

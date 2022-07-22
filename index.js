@@ -42,7 +42,9 @@ let question_c = $select('#c_text');
 let question_d = $select('#d_text');
 let btn = $select('#btn');
 
+
 let currentQuestion = 0;
+let answer = undefined;
 
 loadQuiz();
 
@@ -50,22 +52,46 @@ function loadQuiz() {
    const currentQuizData = questionsData[currentQuestion];
 
    text_question.innerText = currentQuizData.title;
-   
+
    question_a.innerText = currentQuizData.a;
    question_b.innerText = currentQuizData.b;
    question_c.innerText = currentQuizData.c;
    question_d.innerText = currentQuizData.d;
-
+   console.log(`User na questao ${currentQuestion}`)
 };
 
+function getSelected() {
+   const answersEls = document.querySelectorAll('answer');
 
-btn.addEventListener('click', () =>{
+   answersEls.forEach((answerEl) => {
+      if(answerEl.checked) {
+         console.log(answer = answerEl.id)
+      }
+   });
+   
+}
+
+btn.addEventListener('click', () => {
    currentQuestion++
-   console.log(currentQuestion);
+   // getSelected();
 
-   if(currentQuestion < questionsData.length) {
+   if (currentQuestion < 3) {
       loadQuiz();
    } else {
-      console.log('Your finish quiz!')
+      console.log('Quiz finalizado!');
    }
+
 });
+
+let count = 0;
+let obj = setInterval(showMsg, 1000);
+ 
+function showMsg() {
+   console.log(count);
+   count++;
+   if (currentQuestion == 3) {
+      clearInterval(obj)
+      alert(`Quiz finalizado em ${count} segundos!`)
+   }
+}
+
